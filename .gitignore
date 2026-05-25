@@ -1,0 +1,10 @@
+# Handoff de design (não faz parte do código de produção)
+Grupo ficcus-handoff/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs e temporários
+*.log
+/tmp/
