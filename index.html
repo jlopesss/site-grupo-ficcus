@@ -106,6 +106,17 @@
   .servico-stack.stack-active .row:nth-child(4) { transition-delay: .24s; }
   .servico-stack.stack-active .row:nth-child(5) { transition-delay: .32s; }
 
+  /* ── Service stack mobile: vertical ao invés de horizontal (evita clip) ── */
+  @media (max-width: 900px) {
+    .servico-stack .row {
+      transform: translateY(28px);
+      opacity: 0;
+      filter: blur(2px);
+      transition: transform .75s cubic-bezier(.16,1,.3,1), filter .55s ease, opacity .65s ease;
+    }
+    .servico-stack.stack-active .row { opacity: 1; }
+  }
+
   /* ── Luz passante nos serviços ── */
   .servico::before {
     content: ''; position: absolute; top: 0; bottom: 0; left: 0; z-index: 3;
@@ -196,7 +207,7 @@
     position: absolute; inset: 0; z-index: 1;
     background:
       linear-gradient(to bottom, rgba(0,0,0,.4) 0%, transparent 28%, transparent 58%, rgba(0,0,0,.88) 100%),
-      linear-gradient(to right, rgba(0,0,0,.55), transparent 62%);
+      linear-gradient(to right, rgba(0,0,0,.96) 0%, rgba(0,0,0,.82) 16%, rgba(0,0,0,.45) 32%, rgba(0,0,0,.12) 42%, transparent 48%);
   }
   .hero-body { position: relative; z-index: 2; }
   .hero h1 {
@@ -231,7 +242,7 @@
   /* ── Quem Somos ── */
   .sobre {
     display: grid;
-    grid-template-columns: 1fr 1.15fr;
+    grid-template-columns: 0.7fr 1.3fr;
     gap: clamp(28px, 4.5vw, 72px);
     align-items: start;
   }
@@ -511,12 +522,17 @@
     text-align: center;
   }
   .footer-credit {
-    font-size: 9.5px; letter-spacing: .12em; text-transform: none;
-    color: rgba(255,255,255,.22); font-weight: 400;
+    font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 400;
     transition: color .25s;
   }
-  .footer-credit:hover { color: rgba(255,255,255,.6); }
+  .footer-credit:hover { color: #fff; }
   .footer-tag { margin-right: 76px; }
+  @media (max-width: 640px) {
+    footer { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+    .footer-tag { margin-right: 0; }
+    .footer-center { gap: 7px; }
+  }
 
   /* ── Lightbox ── */
   .lb {
@@ -686,6 +702,22 @@
   }
   .reveal-inner.visible { transform: translateY(0); }
 
+  /* ── SVG câmeras e clicks ── */
+  .svg-camera {
+    position: absolute; pointer-events: none; z-index: 0;
+    opacity: .07;
+  }
+  .svg-click {
+    position: absolute; pointer-events: none; z-index: 0;
+    opacity: .09;
+    animation: click-pulse 4s ease-in-out infinite;
+  }
+  .svg-click:nth-child(even) { animation-delay: -2s; }
+  @keyframes click-pulse {
+    0%, 100% { opacity: .06; transform: scale(1) rotate(0deg); }
+    50%       { opacity: .14; transform: scale(1.12) rotate(15deg); }
+  }
+
   /* ── Cursor follower ── */
   .cursor-glow {
     position: fixed; z-index: 198; pointer-events: none;
@@ -755,7 +787,7 @@
 <header id="top" class="hero">
   <div class="hero-bg" aria-hidden="true">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="videos/video_hero1.mp4" type="video/mp4"/>
+      <source src="videos/video_hero2.mp4" type="video/mp4"/>
     </video>
   </div>
   <!-- Viewfinder corners -->
@@ -785,7 +817,28 @@
 </header>
 
 <!-- ─────── QUEM SOMOS ─────── -->
-<section id="sobre" class="block">
+<section id="sobre" class="block" style="position:relative;overflow:hidden;">
+  <!-- SVG câmera decorativa -->
+  <svg class="svg-camera" style="width:220px;height:154px;right:clamp(20px,6vw,80px);bottom:clamp(40px,8vw,100px)" aria-hidden="true" viewBox="0 0 80 56">
+    <rect x="1" y="12" width="78" height="42" rx="4" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="40" cy="33" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="40" cy="33" r="7" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="40" cy="33" r="3" fill="none" stroke="white" stroke-width=".8"/>
+    <path d="M24 12 L28 4 L36 4 L40 12" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="8" y="15" width="10" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="68" cy="18" r="2.5" fill="none" stroke="white" stroke-width="1"/>
+  </svg>
+  <!-- Click sparkle -->
+  <svg class="svg-click" style="width:48px;height:48px;left:clamp(20px,8vw,120px);top:clamp(80px,12vw,160px)" aria-hidden="true" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="1" y1="12" x2="5" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19" y1="12" x2="23" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4.22" y1="4.22" x2="7.05" y2="7.05" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="16.95" y1="16.95" x2="19.78" y2="19.78" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="4.22" y1="19.78" x2="7.05" y2="16.95" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="16.95" y1="7.05" x2="19.78" y2="4.22" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>
   <div class="section-head fade-up">
     <div class="label-row">
       <span class="label">01 / Quem somos</span>
@@ -1000,23 +1053,23 @@
       <div class="cell-label">Biarritz</div>
     </div>
   </div>
-  <div class="gl-label">Blux</div>
+  <div class="gl-label">Blu-x</div>
   <div class="galeria-grid">
     <div class="cell c-7 tall lead"
-         style="background-image: url('img/Branding - Blux/SaveClip.App_653581142_18107835811838744_3494710580266079546_n.jpg');">
-      <div class="cell-label">Blux</div>
+         style="background-image: url('img/Branding - Blux/SaveClip.App_660420040_18109137787869218_7335345562191680633_n.jpg');">
+      <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-5 tall"
          style="background-image: url('img/Branding - Blux/SaveClip.App_656200401_18091465976124791_7415035827327074666_n.jpg');">
-      <div class="cell-label">Blux</div>
+      <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
          style="background-image: url('img/Branding - Blux/SaveClip.App_661568774_18544094950067093_7955562846722902067_n.jpg');">
-      <div class="cell-label">Blux</div>
+      <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
          style="background-image: url('img/Branding - Blux/SaveClip.App_670558684_18227661286309816_7988761783435310067_n.jpg');">
-      <div class="cell-label">Blux</div>
+      <div class="cell-label">Blu-x</div>
     </div>
   </div>
   <div class="gl-label">Guaraplus</div>
@@ -1045,7 +1098,7 @@
   <div class="gl-label">Rum Parnaioca</div>
   <div class="galeria-grid">
     <div class="cell c-7 tall lead"
-         style="background-image: url('img/Branding - Blux/SaveClip.App_660420040_18109137787869218_7335345562191680633_n.jpg');">
+         style="background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_654773556_18041242850534685_5092492685132287138_n.jpg');">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-5 tall"
@@ -1065,6 +1118,31 @@
 
 <!-- ─────── STUDIO (serviço) ─────── -->
 <section id="studio" class="servico">
+  <!-- SVG câmera grande no Studio -->
+  <svg class="svg-camera" style="width:340px;height:238px;right:clamp(20px,5vw,60px);bottom:80px;opacity:.09" aria-hidden="true" viewBox="0 0 80 56">
+    <rect x="1" y="12" width="78" height="42" rx="4" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="40" cy="33" r="14" fill="none" stroke="white" stroke-width="1"/>
+    <circle cx="40" cy="33" r="9" fill="none" stroke="white" stroke-width=".8"/>
+    <circle cx="40" cy="33" r="4" fill="none" stroke="white" stroke-width=".7"/>
+    <path d="M24 12 L28 4 L36 4 L40 12" fill="none" stroke="white" stroke-width="1"/>
+    <rect x="8" y="15" width="10" height="7" rx="1.5" fill="none" stroke="white" stroke-width=".8"/>
+    <circle cx="68" cy="18" r="2.5" fill="none" stroke="white" stroke-width=".8"/>
+    <!-- extras: tripé -->
+    <line x1="30" y1="54" x2="20" y2="56" stroke="white" stroke-width="1"/>
+    <line x1="40" y1="54" x2="40" y2="56" stroke="white" stroke-width="1"/>
+    <line x1="50" y1="54" x2="60" y2="56" stroke="white" stroke-width="1"/>
+  </svg>
+  <!-- Click sparkle pequeno -->
+  <svg class="svg-click" style="width:32px;height:32px;left:clamp(40px,10vw,160px);top:60px" aria-hidden="true" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="1" y1="12" x2="5" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19" y1="12" x2="23" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4.22" y1="4.22" x2="7.05" y2="7.05" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="16.95" y1="16.95" x2="19.78" y2="19.78" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="4.22" y1="19.78" x2="7.05" y2="16.95" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="16.95" y1="7.05" x2="19.78" y2="4.22" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>
   <div class="servico-head">
     <span class="servico-tag">04 / Serviço</span>
     <span class="servico-tag">Editorial · Produto · Retrato</span>
@@ -1077,12 +1155,8 @@
     <div class="row r5">Studio</div>
   </div>
   <div class="servico-fotos">
-    <div class="sf-photo sf-placeholder">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round">
-        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-        <circle cx="12" cy="13" r="4"/>
-      </svg>
-      <span class="sf-ph-label">Em breve</span>
+    <div class="sf-photo" style="background-image: url('img/Studio/instagram-quemsomos9.jpg');">
+      <span class="sf-label">Studio</span>
     </div>
     <div class="sf-photo sf-placeholder">
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round">
@@ -1102,29 +1176,21 @@
   </div>
 </section>
 
-<!-- Galeria Studio (em breve) -->
+<!-- Galeria Studio -->
 <section class="block" style="padding-top: 0;">
-  <div class="studio-placeholder-grid fade-up">
-    <div class="studio-ph">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round">
-        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-        <circle cx="12" cy="13" r="4"/>
-      </svg>
-      <span class="ph-label">Em breve</span>
+  <div class="gl-label">Studio</div>
+  <div class="galeria-grid">
+    <div class="cell c-5 tall"
+         style="background-image: url('img/Studio/instagram-quemsomos8.jpg');">
+      <div class="cell-label">Studio</div>
     </div>
-    <div class="studio-ph">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round">
-        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-        <circle cx="12" cy="13" r="4"/>
-      </svg>
-      <span class="ph-label">Em breve</span>
+    <div class="cell c-7 tall lead"
+         style="background-image: url('img/Studio/SaveClip.App_559191886_18390138169192898_5858778955645473298_n.jpg');">
+      <div class="cell-label">Studio</div>
     </div>
-    <div class="studio-ph">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round">
-        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-        <circle cx="12" cy="13" r="4"/>
-      </svg>
-      <span class="ph-label">Em breve</span>
+    <div class="cell c-12"
+         style="background-image: url('img/Studio/SaveClip.App_587516869_18078642778930538_3167333254414769166_n.jpg'); aspect-ratio: 16/6;">
+      <div class="cell-label">Studio</div>
     </div>
   </div>
 </section>
@@ -1143,6 +1209,34 @@
 
 <!-- ─────── CONTATO ─────── -->
 <section id="contato" class="contato">
+  <!-- Clicks decorativos -->
+  <svg class="svg-click" style="position:absolute;width:56px;height:56px;left:12%;top:18%;z-index:3" aria-hidden="true" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="1" y1="12" x2="5" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19" y1="12" x2="23" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4.22" y1="4.22" x2="7.05" y2="7.05" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="16.95" y1="16.95" x2="19.78" y2="19.78" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="4.22" y1="19.78" x2="7.05" y2="16.95" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="16.95" y1="7.05" x2="19.78" y2="4.22" stroke="white" stroke-width="1" stroke-linecap="round"/>
+  </svg>
+  <svg class="svg-click" style="position:absolute;width:36px;height:36px;right:14%;top:28%;z-index:3;animation-delay:-1.5s" aria-hidden="true" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="1" y1="12" x2="5" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19" y1="12" x2="23" y2="12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4.22" y1="4.22" x2="7.05" y2="7.05" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="16.95" y1="16.95" x2="19.78" y2="19.78" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="4.22" y1="19.78" x2="7.05" y2="16.95" stroke="white" stroke-width="1" stroke-linecap="round"/>
+    <line x1="16.95" y1="7.05" x2="19.78" y2="4.22" stroke="white" stroke-width="1" stroke-linecap="round"/>
+  </svg>
+  <svg class="svg-camera" style="position:absolute;width:120px;height:84px;right:8%;bottom:15%;z-index:3;opacity:.05" aria-hidden="true" viewBox="0 0 80 56">
+    <rect x="1" y="12" width="78" height="42" rx="4" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="40" cy="33" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+    <circle cx="40" cy="33" r="7" fill="none" stroke="white" stroke-width="1"/>
+    <path d="M24 12 L28 4 L36 4 L40 12" fill="none" stroke="white" stroke-width="1.5"/>
+    <rect x="8" y="15" width="10" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1"/>
+  </svg>
   <div class="contato-bg"
        style="background-image: url('img/Quem somos/instagram-quemsomos10.jpg');"
        aria-hidden="true"></div>
