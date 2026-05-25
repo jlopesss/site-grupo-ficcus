@@ -222,10 +222,12 @@
   .hero-foot .ital-sub {
     font-size: clamp(15px, 1.4vw, 19px);
     max-width: 520px; line-height: 1.55;
+    margin-left: 2%;
   }
   .hero-meta {
     font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
     color: var(--muted); display: flex; gap: 16px; align-items: center;
+    margin-left: 2%;
   }
   .hero-meta .dot { width: 6px; height: 6px; border-radius: 99px; background: #fff; }
 
@@ -247,9 +249,11 @@
   /* ── Quem Somos ── */
   .sobre {
     display: grid;
-    grid-template-columns: 0.84fr 1.16fr;
+    grid-template-columns: 0.92fr 1.08fr;
     gap: clamp(28px, 4.5vw, 72px);
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   @media (max-width: 760px) { .sobre { grid-template-columns: 1fr; } }
   .sobre-fotos {
@@ -390,6 +394,10 @@
     .galeria-grid { grid-template-columns: repeat(2, 1fr); }
     .galeria-grid .cell { grid-column: span 1 !important; aspect-ratio: 1/1 !important; }
     .galeria-grid .cell.lead { grid-column: span 2 !important; }
+    /* Wrappers flex de gap: dissolve no mobile → filhos viram itens normais da grade */
+    .af-col-right, .esb-col-right { display: contents !important; }
+    /* Rum Parnaioca, Biarritz e Blu-x: cancela grid-row explícito → auto-placement normal */
+    .rp-grid .cell, .biarritz-grid .cell, .blux-grid .cell { grid-row: auto !important; }
   }
 
   /* #5 — legenda sobre cada imagem */
@@ -662,9 +670,13 @@
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
   .marquee-track {
-    display: inline-flex; flex-shrink: 0;
+    display: flex;
     will-change: transform;
     animation: marquee 38s linear infinite;
+  }
+  .marquee-set {
+    display: flex;
+    flex-shrink: 0;
   }
   .marquee-item {
     display: inline-flex; align-items: center; gap: 24px;
@@ -922,9 +934,19 @@
 
 <!-- ─────── MARQUEE ─────── -->
 <div class="marquee-section" aria-hidden="true">
-  <!-- Cópia 1 + Cópia 2 para loop perfeito: ao mover -50% chegamos exatamente na cópia 2 -->
   <div class="marquee-track">
-    <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span><span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+    <div class="marquee-set">
+      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+    </div>
   </div>
 </div>
 
@@ -984,9 +1006,15 @@
          style="background-image: url('img/Eventos - Adoro frozen/SaveClip.App_482844826_17912053287091376_8508502004100444629_n.jpg');">
       <div class="cell-label">Adoro Frozen</div>
     </div>
-    <div class="cell c-5 tall"
-         style="background-image: url('img/Eventos - Adoro frozen/SaveClip.App_482929379_17912053323091376_7833498168157117991_n.jpg');">
-      <div class="cell-label">Adoro Frozen</div>
+    <div class="af-col-right" style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px;">
+      <div class="cell tall"
+           style="flex: 0 0 auto; background-image: url('img/Eventos - Adoro frozen/SaveClip.App_482929379_17912053323091376_7833498168157117991_n.jpg');">
+        <div class="cell-label">Adoro Frozen</div>
+      </div>
+      <div class="cell"
+           style="flex: 1 1 0; min-height: 0; aspect-ratio: auto; background-image: url('img/Eventos - Adoro frozen/SaveClip.App_612444909_17947215615091376_2744669397150950871_n.jpg');">
+        <div class="cell-label">Adoro Frozen</div>
+      </div>
     </div>
     <div class="cell c-4"
          style="background-image: url('img/Eventos - Adoro frozen/SaveClip.App_483136353_17912053359091376_5523036285007722475_n.jpg');">
@@ -1007,9 +1035,15 @@
          style="background-image: url('img/Eventos - Esbórnia Carnario 2026/SaveClip.App_639530340_17952121668091376_7578720565562920547_n.jpg');">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
-    <div class="cell c-5 tall"
-         style="background-image: url('img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640273889_17952121659091376_8000983442517569807_n.jpg');">
-      <div class="cell-label">Esbórnia Carnario</div>
+    <div class="esb-col-right" style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px;">
+      <div class="cell tall"
+           style="flex: 0 0 auto; background-image: url('img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640273889_17952121659091376_8000983442517569807_n.jpg');">
+        <div class="cell-label">Esbórnia Carnario</div>
+      </div>
+      <div class="cell"
+           style="flex: 1 1 0; min-height: 0; aspect-ratio: auto; background-image: url('img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (4).webp');">
+        <div class="cell-label">Esbórnia Carnario</div>
+      </div>
     </div>
     <div class="cell c-6"
          style="background-image: url('img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640479520_17952121677091376_1926796023849432222_n.jpg');">
@@ -1017,6 +1051,18 @@
     </div>
     <div class="cell c-6"
          style="background-image: url('img/Eventos - Esbórnia Carnario 2026/SaveClip.App_641749777_17952121722091376_6705630460531200202_n.jpg');">
+      <div class="cell-label">Esbórnia Carnario</div>
+    </div>
+    <div class="cell c-4"
+         style="aspect-ratio: 4/5; background-image: url('img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (11).webp');">
+      <div class="cell-label">Esbórnia Carnario</div>
+    </div>
+    <div class="cell c-4"
+         style="aspect-ratio: 4/5; background-image: url('img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (5).webp');">
+      <div class="cell-label">Esbórnia Carnario</div>
+    </div>
+    <div class="cell c-4"
+         style="aspect-ratio: 4/5; background-image: url('img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (9).webp');">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
   </div>
@@ -1073,17 +1119,21 @@
 <!-- Galeria Branding -->
 <section class="block" style="padding-top: 0;">
   <div class="gl-label">Biarritz</div>
-  <div class="galeria-grid">
+  <div class="galeria-grid biarritz-grid">
     <div class="cell c-7 tall lead"
-         style="background-image: url('img/Branding - Biarritz/SaveClip.App_650355481_17983507502970408_4071343410384058445_n.jpg');">
+         style="background-image: url('img/Branding - Biarritz/SaveClip.App_655716675_18088560875177801_5696432638825819892_n.jpg'); grid-row: 1 / span 2;">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-5 tall"
-         style="background-image: url('img/Branding - Biarritz/SaveClip.App_651510799_18070113872639281_2127448319663561693_n.jpg');">
+         style="background-image: url('img/Branding - Biarritz/SaveClip.App_651510799_18070113872639281_2127448319663561693_n.jpg'); grid-row: 1;">
+      <div class="cell-label">Biarritz</div>
+    </div>
+    <div class="cell"
+         style="grid-column: 8 / span 5; grid-row: 2; background-image: url('img/Branding - Biarritz/SaveClip.App_656293050_18075317147440472_2966605857287965547_n.jpg'); background-position: center 52%; aspect-ratio: 15/8;">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-6"
-         style="background-image: url('img/Branding - Biarritz/SaveClip.App_654450771_18122293270607632_771115265059282893_n.jpg');">
+         style="background-image: url('img/Branding - Biarritz/SaveClip.App_655251051_18068478806315141_414189759875621620_n.jpg');">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-6"
@@ -1092,13 +1142,17 @@
     </div>
   </div>
   <div class="gl-label">Blu-x</div>
-  <div class="galeria-grid">
+  <div class="galeria-grid blux-grid">
     <div class="cell c-7 tall lead"
-         style="background-image: url('img/Branding - Blux/SaveClip.App_660420040_18109137787869218_7335345562191680633_n.jpg');">
+         style="background-image: url('img/Branding - Blux/SaveClip.App_660420040_18109137787869218_7335345562191680633_n.jpg'); grid-row: 1 / span 2;">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-5 tall"
-         style="background-image: url('img/Branding - Blux/SaveClip.App_656200401_18091465976124791_7415035827327074666_n.jpg');">
+         style="background-image: url('img/Branding - Blux/SaveClip.App_656200401_18091465976124791_7415035827327074666_n.jpg'); grid-row: 1;">
+      <div class="cell-label">Blu-x</div>
+    </div>
+    <div class="cell"
+         style="grid-column: 8 / span 5; grid-row: 2; background-image: url('img/Branding - Blux/SaveClip.App_657351125_18105459616893679_749955414264995578_n.jpg'); background-position: center; aspect-ratio: 15/8;">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
@@ -1106,7 +1160,7 @@
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
-         style="background-image: url('img/Branding - Blux/SaveClip.App_670558684_18227661286309816_7988761783435310067_n.jpg');">
+         style="background-image: url('img/Branding - Blux/SaveClip.App_656265803_18123317455590119_3317030729987041951_n.jpg');">
       <div class="cell-label">Blu-x</div>
     </div>
   </div>
@@ -1116,35 +1170,35 @@
          style="background-image: url('img/Branding - Guaraplus/SaveClip.App_549296275_17934487134091376_204189283413184360_n.jpg'); background-position: center top;">
       <div class="cell-label">Guaraplus</div>
     </div>
-    <div class="cell c-3 tall"
-         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_549709020_17934487143091376_265918841303893384_n.jpg');">
-      <div class="cell-label">Guaraplus</div>
-    </div>
-    <div class="cell c-3"
+    <div class="cell c-6"
          style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550474535_17934487179091376_1733892165605131701_n.jpg');">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550425283_17934487170091376_7634340089865659064_n.jpg');">
+         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550425283_17934487170091376_7634340089865659064_n.jpg'); aspect-ratio: 4/5;">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550664645_17934487197091376_7854378250815484349_n.jpg');">
+         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_549709020_17934487143091376_265918841303893384_n.jpg'); aspect-ratio: 4/5;">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550697491_17934487161091376_6474762429963000352_n.jpg');">
+         style="background-image: url('img/Branding - Guaraplus/SaveClip.App_550697491_17934487161091376_6474762429963000352_n.jpg'); aspect-ratio: 4/5;">
       <div class="cell-label">Guaraplus</div>
     </div>
   </div>
   <div class="gl-label">Rum Parnaioca</div>
-  <div class="galeria-grid">
+  <div class="galeria-grid rp-grid">
     <div class="cell c-7 tall lead"
-         style="background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_654773556_18041242850534685_5092492685132287138_n.jpg');">
+         style="background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_656294996_18085320125252944_3314374271264843504_n.jpg'); grid-row: 1 / span 2;">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-5 tall"
-         style="background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_655042062_18125984116603187_5138126882935852821_n.jpg');">
+         style="background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_655042062_18125984116603187_5138126882935852821_n.jpg'); grid-row: 1;">
+      <div class="cell-label">Rum Parnaioca</div>
+    </div>
+    <div class="cell"
+         style="grid-column: 8 / span 5; grid-row: 2; background-image: url('img/Branding - Rum Parnaioca/SaveClip.App_654773556_18041242850534685_5092492685132287138_n.jpg'); background-position: center; aspect-ratio: 15/8;">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-6"
@@ -1549,6 +1603,21 @@
       });
     });
   })();
+
+  /* ── Marquee: pixel-exact loop via JS ── */
+  document.fonts.ready.then(() => {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+    const set = track.querySelector('.marquee-set');
+    if (!set) return;
+    const w = set.offsetWidth;
+    const s = document.createElement('style');
+    s.textContent = `@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-${w}px)}}`;
+    document.head.appendChild(s);
+    track.style.animation = 'none';
+    void track.offsetWidth;
+    track.style.animation = '';
+  });
 </script>
 </body>
 </html>
