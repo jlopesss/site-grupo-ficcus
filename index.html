@@ -90,6 +90,9 @@
   .fade-up.delay-1 { transition-delay: .14s; }
   .fade-up.delay-2 { transition-delay: .28s; }
   .fade-up.delay-3 { transition-delay: .42s; }
+  .fade-up.delay-4 { transition-delay: .56s; }
+  .fade-up.delay-5 { transition-delay: .70s; }
+  .fade-up.delay-6 { transition-delay: .84s; }
   .fade-up.visible { opacity: 1; transform: none; filter: blur(0); }
 
   /* ── Service stack — stagger por linha ── */
@@ -490,7 +493,10 @@
     position: absolute; inset: 0; z-index: 0;
     background-size: cover; background-position: center;
     filter: brightness(.38) contrast(1.12) grayscale(.2);
+    transform: scale(1.07);
+    transition: transform 1.8s cubic-bezier(.22, 1, .36, 1);
   }
+  .contato.contato-in .contato-bg { transform: scale(1); }
   .contato-bg::after {
     content: ""; position: absolute; inset: 0;
     background: linear-gradient(180deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.48) 50%, #000 100%);
@@ -820,6 +826,7 @@
     <a href="#eventos">Eventos</a>
     <a href="#branding">Branding</a>
     <a href="#studio">Studio</a>
+    <a href="#contato">Contato</a>
   </div>
   <div class="nav-right">
     <a href="https://instagram.com/grupoficcus" class="nav-ig" target="_blank" rel="noopener" aria-label="Instagram @grupoficcus">
@@ -1333,7 +1340,7 @@
        style="background-image: url('img/Quem somos/instagram-quemsomos10.jpg');"
        aria-hidden="true"></div>
   <div class="contato-inner">
-    <span class="label fade-up">Vamos conversar</span>
+    <span class="label fade-up">Entre em contato</span>
     <!-- #6 — novo texto de contato -->
     <h2 style="margin-top: 24px;" class="fade-up delay-1">
       Vamos trabalhar<br/>
@@ -1355,16 +1362,16 @@
       </a>
     </div>
 
-    <div class="contato-info fade-up">
-      <div class="item">
+    <div class="contato-info">
+      <div class="item fade-up delay-4">
         <div class="k">Instagram</div>
         <div class="v italic"><a href="https://instagram.com/grupoficcus" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">@grupoficcus</a></div>
       </div>
-      <div class="item">
+      <div class="item fade-up delay-5">
         <div class="k">Email</div>
         <div class="v italic">contato@grupoficcus.com</div>
       </div>
-      <div class="item">
+      <div class="item fade-up delay-6">
         <div class="k">Base</div>
         <div class="v italic">Rio de Janeiro · RJ</div>
       </div>
@@ -1490,6 +1497,18 @@
     });
   }, { threshold: 0.25, rootMargin: '0px 0px -20px 0px' });
   document.querySelectorAll('.gl-label').forEach(el => ioLabel.observe(el));
+
+  /* ── Zoom do fundo na seção Contato ── */
+  const ioContato = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('contato-in');
+        ioContato.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  const contatoSection = document.getElementById('contato');
+  if (contatoSection) ioContato.observe(contatoSection);
 
   /* ── Luz passante nos serviços ── */
   const ioSwept = new IntersectionObserver((entries) => {
