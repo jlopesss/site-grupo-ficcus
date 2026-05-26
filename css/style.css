@@ -319,7 +319,7 @@ nav.mob-open {
 /* ── Section base ── */
 section.block { padding: clamp(72px, 10vw, 144px) var(--pad); }
 /* Espaço acima do marquee: dobro do original */
-#sobre   { padding-bottom: clamp(144px, 20vw, 288px); }
+#sobre   { padding-bottom: clamp(108px, 15vw, 216px); }
 /* Remove borda superior do eventos — o marquee já tem borda inferior própria */
 #eventos { border-top: none; }
 .section-head {
@@ -750,7 +750,7 @@ footer .brand img { width: 28px; height: 28px; border-radius: 6px; object-fit: c
 
 /* ── Barra de progresso de scroll ── */
 .scroll-progress {
-  position: fixed; top: 0; left: 0; z-index: 201;
+  position: fixed; top: 0; left: 0; z-index: 220;
   height: 1.5px; width: 0%;
   background: linear-gradient(to right, rgba(255,255,255,.28), #fff 80%);
   pointer-events: none;
@@ -779,7 +779,7 @@ body::before {
 .marquee-wrapper {
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   padding: 0;
-  margin-bottom: clamp(80px, 10vw, 140px);
+  margin-bottom: clamp(120px, 15vw, 210px);
 }
 .marquee-section {
   overflow: hidden;
@@ -857,6 +857,17 @@ body::before {
   .marquee-set .marquee-item:nth-child(7) img { height: 56px; }
   .marquee-set .marquee-item:nth-child(9) img { height: 35px; }
   .marquee-set .marquee-item:nth-child(11) img { height: 50px; }
+}
+
+.scroll-hint {
+  display: flex; justify-content: center;
+  padding: 16px 0 24px;
+  color: rgba(255,255,255,.55);
+  animation: hint-bob 2.4s ease-in-out infinite;
+}
+@keyframes hint-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
 }
 
 /* @keyframes marquee injetado por JS/main.js após window.load */
