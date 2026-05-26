@@ -33,7 +33,7 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.18, rootMargin: '0px 0px -15% 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
@@ -45,7 +45,7 @@ const ioGrid = new IntersectionObserver((entries) => {
       ioGrid.unobserve(e.target);
     }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.galeria-grid').forEach(g => ioGrid.observe(g));
 
 /* ── Service stack stagger ── */
@@ -59,7 +59,7 @@ const ioStack = new IntersectionObserver((entries) => {
       ioStack.unobserve(e.target);
     }
   });
-}, { threshold: 0.05 });
+}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.servico').forEach(s => ioStack.observe(s));
 
 /* ── Label / linha separadora ── */
@@ -70,7 +70,7 @@ const ioLabel = new IntersectionObserver((entries) => {
       ioLabel.unobserve(e.target);
     }
   });
-}, { threshold: 0.25, rootMargin: '0px 0px -20px 0px' });
+}, { threshold: 0.4, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.gl-label').forEach(el => ioLabel.observe(el));
 
 /* ── Lazy load de background-image ── */
@@ -92,7 +92,7 @@ const ioContato = new IntersectionObserver((entries) => {
       ioContato.unobserve(e.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 const contatoSection = document.getElementById('contato');
 if (contatoSection) ioContato.observe(contatoSection);
 
@@ -104,7 +104,7 @@ const ioSwept = new IntersectionObserver((entries) => {
       ioSwept.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.22, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.servico').forEach(s => ioSwept.observe(s));
 
 /* ── Lightbox ── */
