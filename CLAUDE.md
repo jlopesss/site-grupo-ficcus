@@ -132,3 +132,9 @@ Logos processadas e suas particularidades:
 - `sally-wet.png` — processada de `sally-wet.jpg` (fundo branco + círculo azul removidos)
 - `basickini.svg` — SVG limpo, usado diretamente
 - `ela-beachwear.png` — logo branca original; usa `filter: brightness(0) invert(1)` no CSS
+
+## Lição de depuração
+
+**Seletores CSS genéricos afetam todos os elementos do tipo.** O seletor `nav { position: fixed; top: 0 }` aplica a **todos** os `<nav>` da página — incluindo elementos semânticos internos como `<nav class="mob-links">` dentro do menu mobile. Isso fez os links ficarem presos em `top: 0` atrás da barra de navegação, sem responder a nenhuma mudança no container pai.
+
+**Regra:** antes de iterar sobre sintomas (padding, justify-content, z-index), perguntar primeiro "este elemento está no fluxo normal?" — checar se há seletor de tag global (nav, header, section…) aplicando position ou outras propriedades estruturais inesperadamente. Ler o CSS do elemento e seus ancestrais antes de começar a ajustar.
