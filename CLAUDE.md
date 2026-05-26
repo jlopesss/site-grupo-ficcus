@@ -53,7 +53,7 @@ Grupo ficcus-handoff              ← pasta de briefing/handoff (não usada no b
 |---|-------|----|-----------|
 | — | Hero | `#top` | Vídeo em loop (`video_hero2.mp4`), título word-by-word, cantos de visor |
 | 01 | Quem Somos | `#sobre` | 2 fotos paisagem empilhadas (João + Bernardo) + texto editorial |
-| — | Marquee | — | Ticker infinito: Fotografia · Filmagem · Branding · Editorial · Eventos… |
+| — | Marquee | — | Ticker infinito com logos de clientes, título "Marcas que passaram pelo nosso olhar" |
 | 02 | Eventos | `#eventos` | Seção de serviço + galeria (Adoro Frozen / Esbórnia Carnario) |
 | 03 | Branding | `#branding` | Seção de serviço + galeria (Biarritz / Blu-x / Guaraplus / Rum Parnaioca) |
 | 04 | Studio | `#studio` | Seção de serviço + galeria com 3 fotos reais |
@@ -76,6 +76,13 @@ Grupo ficcus-handoff              ← pasta de briefing/handoff (não usada no b
 - **Film grain**: `body::before` com SVG feTurbulence inline (data URL), `mix-blend-mode` implícito via `opacity: 0.045`
 - **SVG decorativos**: aperturas de câmera (`svg-aperture` / `svg-aperture-rev`) giratórias, cantos de visor no hero, câmeras e sparkles em seções
 - **Luz passante**: efeito `light-sweep` da esquerda para direita ao entrar em cada `.servico`
+- **Marquee de logos**: ticker infinito com 11 marcas clientes; estrutura `.marquee-title` + `.marquee-wrapper` > `.marquee-section` > `.marquee-track` > 2× `.marquee-set`
+  - Logos em `img/Logomarcas/`: adoro-frozen.png, basickini.svg, blux_clean.png, ela-beachwear.png, esbornia-sem-texto.png, guaraplus_clean.png, magiti-vision.webp, parnaioca.png, plana-barefoot.png, sally-wet.png + Biarritz como `<span class="mq-word">` (sem imagem)
+  - Todas as logos recebem `filter: grayscale(1) invert(1)` por padrão; ela-beachwear usa `brightness(0) invert(1)`
+  - Tamanhos individuais via `nth-child`: adoro-frozen 49px · basickini 28px · blux 33px · ela-beachwear 28px · esbórnia 58px · guaraplus 70px · parnaioca 44px · sally-wet 63px · demais 55px
+  - `overflow-x: clip` no `.marquee-section` (evita stacking context que interfere com GPU compositing)
+  - `backface-visibility: hidden` + `translate3d` nos keyframes (reduz flickering)
+  - Espaçamento: `#sobre { padding-bottom: clamp(144px,20vw,288px) }` · `.marquee-wrapper { margin-bottom: clamp(80px,10vw,140px) }` · `#eventos { border-top: none }`
 
 ## Animações (JavaScript — `js/main.js`)
 
@@ -88,7 +95,7 @@ Grupo ficcus-handoff              ← pasta de briefing/handoff (não usada no b
 - `IntersectionObserver` (ioSwept) → `.servico.swept`: dispara a luz passante (threshold 15%)
 - Scroll progress bar no topo da página (via `requestAnimationFrame`)
 - Botões magnéticos (`mousemove` em `.btn`, `.nav-cta`, `.nav-ig`)
-- Marquee: reescrita do `@keyframes` via JS após `document.fonts.ready` para loop pixel-exact
+- Marquee: animação **não existe no CSS** — JS injeta `@keyframes marquee` com `translate3d` pixel-exact após `window.load`, depois inicia via `requestAnimationFrame`. Duração atual: `38s`. Evita restart visual e flickering de GPU.
 
 ## CSS — `css/style.css`
 
@@ -107,3 +114,21 @@ Grupo ficcus-handoff              ← pasta de briefing/handoff (não usada no b
 ## Studio
 
 Seção com 3 fotos reais em `img/Studio/`. Se novas fotos chegarem, adicionar em `img/Studio/` e inserir novas células `.cell` na `.galeria-grid` da seção Studio.
+
+## Logos de clientes (`img/Logomarcas/`)
+
+Pasta criada para o marquee de marcas. Padrão de processamento das imagens (Python Pillow):
+- Remover fundo branco (soma RGB > 600 → transparente)
+- Converter pixels restantes para preto puro `(0,0,0,255)`
+- Preservar pixels já transparentes no original (alpha=0 no source → manter)
+- Auto-crop com `img.getbbox()` para eliminar padding transparente invisível
+- Logos com fundo colorido (ex: blue circle): detectar e remover a cor de fundo antes de converter
+
+Logos processadas e suas particularidades:
+- `guaraplus_clean.png` — processada de `guaraplus2.png` (outline preto sobre branco)
+- `esbornia-sem-texto.png` — cropada de 600×800 → 400×502 (tinha 80px vazio em cima, 218px embaixo)
+- `parnaioca.png` — cropada de 400×154 → 372×89 (tinha 31px/34px de padding v)
+- `blux_clean.png` — processada de `blux.webp` (texto cinza-azul → preto)
+- `sally-wet.png` — processada de `sally-wet.jpg` (fundo branco + círculo azul removidos)
+- `basickini.svg` — SVG limpo, usado diretamente
+- `ela-beachwear.png` — logo branca original; usa `filter: brightness(0) invert(1)` no CSS

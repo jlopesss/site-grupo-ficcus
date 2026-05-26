@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Grupo Ficcus — Olhar Ficcus</title>
-<link rel="icon" href="img/logo_ficcus.webp"/>
+<title>Grupo Ficcus | Olhar Ficcus</title>
+<link rel="icon" href="img/logo_ficcus.webp" type="image/webp"/>
+<link rel="apple-touch-icon" href="img/logo_ficcus.webp"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/style.css?v=5"/>
 </head>
 <body>
 <div class="scroll-progress" id="sp" aria-hidden="true"></div>
@@ -35,8 +36,26 @@
       </svg>
     </a>
     <a href="#contato" class="nav-cta">Orçamento <span class="nav-cta-arrow">→</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- ─────── MENU MOBILE ─────── -->
+<div class="mob-menu" id="mob-menu" aria-label="Menu de navegação">
+  <nav class="mob-links">
+    <a href="#sobre" class="mob-link">Quem somos</a>
+    <a href="#eventos" class="mob-link">Eventos</a>
+    <a href="#branding" class="mob-link">Branding</a>
+    <a href="#studio" class="mob-link">Studio</a>
+    <a href="#contato" class="mob-link">Contato</a>
+  </nav>
+  <a href="#contato" class="mob-cta">Orçamento <span>→</span></a>
+  <a href="https://instagram.com/grupoficcus" class="mob-ig-link" target="_blank" rel="noopener">@grupoficcus</a>
+</div>
 
 <!-- ─────── HERO ─────── -->
 <header id="top" class="hero">
@@ -104,8 +123,8 @@
   <div class="sobre">
     <!-- Fotos empilhadas — paisagem, sem recorte -->
     <div class="sobre-fotos fade-up">
-      <div class="sobre-foto" data-bg="img/Quem somos/instagram-quemsomos-joao.webp"></div>
-      <div class="sobre-foto" data-bg="img/Quem somos/instagram-quemsomos2-bernardo.webp"></div>
+      <div class="sobre-foto" data-bg="img/Quem somos/Quem Somos1.webp"></div>
+      <div class="sobre-foto" data-bg="img/Quem somos/Quem Somos5.webp"></div>
     </div>
 
     <!-- Texto -->
@@ -138,21 +157,18 @@
 </section>
 
 <!-- ─────── MARQUEE ─────── -->
+<p class="marquee-title">Marcas que passaram pelo nosso olhar</p>
+<div class="marquee-wrapper">
 <div class="marquee-section" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-set">
-      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+      <span class="marquee-item"><img src="img/Logomarcas/adoro-frozen.png" alt="Adoro Frozen"></span><span class="marquee-item"><img src="img/Logomarcas/basickini.svg" alt="Basickini"></span><span class="marquee-item"><span class="mq-word">Biarritz</span></span><span class="marquee-item"><img src="img/Logomarcas/blux_clean.png" alt="Blux"></span><span class="marquee-item"><img src="img/Logomarcas/ela-beachwear.png" alt="Ela Beachwear"></span><span class="marquee-item"><img src="img/Logomarcas/esbornia-sem-texto.png" alt="Esbórnia"></span><span class="marquee-item"><img src="img/Logomarcas/guaraplus_clean.png" alt="Guaraplus"></span><span class="marquee-item"><img src="img/Logomarcas/magiti-vision.webp" alt="Magiti Vision"></span><span class="marquee-item"><img src="img/Logomarcas/parnaioca.png" alt="Parnaioca"></span><span class="marquee-item"><img src="img/Logomarcas/plana-barefoot.png" alt="Plana Barefoot"></span><span class="marquee-item"><img src="img/Logomarcas/sally-wet.png" alt="Sally Wet"></span>
     </div>
     <div class="marquee-set" aria-hidden="true">
-      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
-    </div>
-    <div class="marquee-set" aria-hidden="true">
-      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
-    </div>
-    <div class="marquee-set" aria-hidden="true">
-      <span class="marquee-item">Fotografia<span class="mdot"></span></span><span class="marquee-item">Filmagem<span class="mdot"></span></span><span class="marquee-item">Branding<span class="mdot"></span></span><span class="marquee-item">Editorial<span class="mdot"></span></span><span class="marquee-item">Eventos<span class="mdot"></span></span><span class="marquee-item">Identidade Visual<span class="mdot"></span></span><span class="marquee-item">Direção de Arte<span class="mdot"></span></span><span class="marquee-item">Olhar Ficcus<span class="mdot"></span></span>
+      <span class="marquee-item"><img src="img/Logomarcas/adoro-frozen.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/basickini.svg" alt=""></span><span class="marquee-item"><span class="mq-word">Biarritz</span></span><span class="marquee-item"><img src="img/Logomarcas/blux_clean.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/ela-beachwear.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/esbornia-sem-texto.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/guaraplus_clean.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/magiti-vision.webp" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/parnaioca.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/plana-barefoot.png" alt=""></span><span class="marquee-item"><img src="img/Logomarcas/sally-wet.png" alt=""></span>
     </div>
   </div>
+</div>
 </div>
 
 <!-- ─────── EVENTOS (serviço) ─────── -->
@@ -185,10 +201,10 @@
   </div>
 
   <div class="servico-fotos">
-    <div class="sf-photo" data-bg="img/Eventos - Adoro frozen/SaveClip.App_483119300_17912053305091376_6027387889050749335_n.webp">
+    <div class="sf-photo" data-bg="img/Eventos - Adoro frozen/Adoro Frozen6.webp">
       <span class="sf-label">Adoro Frozen</span>
     </div>
-    <div class="sf-photo" data-bg="img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640351745_17952121686091376_1667812377049183488_n.webp">
+    <div class="sf-photo" data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia17.webp">
       <span class="sf-label">Esbórnia Carnario</span>
     </div>
   </div>
@@ -208,66 +224,66 @@
   <div class="gl-label">Adoro Frozen</div>
   <div class="galeria-grid">
     <div class="cell c-7 tall lead"
-         data-bg="img/Eventos - Adoro frozen/SaveClip.App_482844826_17912053287091376_8508502004100444629_n.webp">
+         data-bg="img/Eventos - Adoro frozen/Adoro Frozen1.webp">
       <div class="cell-label">Adoro Frozen</div>
     </div>
     <div class="af-col-right" style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px;">
       <div class="cell tall"
-           data-bg="img/Eventos - Adoro frozen/SaveClip.App_482929379_17912053323091376_7833498168157117991_n.webp" style="flex: 0 0 auto">
+           data-bg="img/Eventos - Adoro frozen/Adoro Frozen3.webp" style="flex: 0 0 auto">
         <div class="cell-label">Adoro Frozen</div>
       </div>
       <div class="cell"
-           data-bg="img/Eventos - Adoro frozen/SaveClip.App_612444909_17947215615091376_2744669397150950871_n.webp" style="flex: 1 1 0; min-height: 0; aspect-ratio: auto">
+           data-bg="img/Eventos - Adoro frozen/Adoro Frozen19.webp" style="flex: 1 1 0; min-height: 0; aspect-ratio: auto">
         <div class="cell-label">Adoro Frozen</div>
       </div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Adoro frozen/SaveClip.App_483136353_17912053359091376_5523036285007722475_n.webp">
+         data-bg="img/Eventos - Adoro frozen/Adoro Frozen7.webp">
       <div class="cell-label">Adoro Frozen</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Adoro frozen/SaveClip.App_483274409_17912053341091376_4123626217178506607_n.webp">
+         data-bg="img/Eventos - Adoro frozen/Adoro Frozen9.webp">
       <div class="cell-label">Adoro Frozen</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Adoro frozen/SaveClip.App_483442934_17912053368091376_598065230989346321_n.webp">
+         data-bg="img/Eventos - Adoro frozen/Adoro Frozen10.webp">
       <div class="cell-label">Adoro Frozen</div>
     </div>
   </div>
   <div class="gl-label">Esbórnia Carnario</div>
   <div class="galeria-grid">
     <div class="cell c-7 tall lead"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/SaveClip.App_639530340_17952121668091376_7578720565562920547_n.webp">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia14.webp">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
     <div class="esb-col-right" style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px;">
       <div class="cell tall"
-           data-bg="img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640273889_17952121659091376_8000983442517569807_n.webp" style="flex: 0 0 auto">
+           data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia16.webp" style="flex: 0 0 auto">
         <div class="cell-label">Esbórnia Carnario</div>
       </div>
       <div class="cell"
-           data-bg="img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (4).webp" style="flex: 1 1 0; min-height: 0; aspect-ratio: auto">
+           data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia7.webp" style="flex: 1 1 0; min-height: 0; aspect-ratio: auto">
         <div class="cell-label">Esbórnia Carnario</div>
       </div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/SaveClip.App_640479520_17952121677091376_1926796023849432222_n.webp">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia19.webp">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/SaveClip.App_641749777_17952121722091376_6705630460531200202_n.webp">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia20.webp">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (11).webp" style="aspect-ratio: 4/5">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia3.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (5).webp" style="aspect-ratio: 4/5">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia8.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Eventos - Esbórnia Carnario 2026/O Grupo Ficcus marcou presença na cobertura da Esbórnia Carnario 2026.Uma das festas mais insan (9).webp" style="aspect-ratio: 4/5">
+         data-bg="img/Eventos - Esbórnia Carnario 2026/Esbornia12.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Esbórnia Carnario</div>
     </div>
   </div>
@@ -303,10 +319,10 @@
   </div>
 
   <div class="servico-fotos">
-    <div class="sf-photo" data-bg="img/Branding - Guaraplus/SaveClip.App_550423898_17934487158091376_1298276109548175764_n.webp">
+    <div class="sf-photo" data-bg="img/Branding - Guaraplus/Guaraplus3.webp">
       <span class="sf-label">Guaraplus</span>
     </div>
-    <div class="sf-photo" data-bg="img/Branding - Rum Parnaioca/SaveClip.App_652756322_18045737240741639_4477529288893102057_n.webp">
+    <div class="sf-photo" data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca1.webp">
       <span class="sf-label">Rum Parnaioca</span>
     </div>
   </div>
@@ -326,92 +342,92 @@
   <div class="gl-label">Biarritz</div>
   <div class="galeria-grid biarritz-grid">
     <div class="cell c-7 tall lead"
-         data-bg="img/Branding - Biarritz/SaveClip.App_655716675_18088560875177801_5696432638825819892_n.webp" style="grid-row: 1 / span 2">
+         data-bg="img/Branding - Biarritz/Biarritz11.png" style="grid-row: 1 / span 2">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-5 tall"
-         data-bg="img/Branding - Biarritz/SaveClip.App_651510799_18070113872639281_2127448319663561693_n.webp" style="grid-row: 1">
+         data-bg="img/Branding - Biarritz/Biarritz12.png" style="grid-row: 1">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell"
-         data-bg="img/Branding - Biarritz/SaveClip.App_656293050_18075317147440472_2966605857287965547_n.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center 52%; aspect-ratio: 15/8">
+         data-bg="img/Branding - Biarritz/Biarritz8.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center 52%; aspect-ratio: 15/8">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Biarritz/SaveClip.App_655251051_18068478806315141_414189759875621620_n.webp">
+         data-bg="img/Branding - Biarritz/Biarritz6.webp">
       <div class="cell-label">Biarritz</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Biarritz/SaveClip.App_669921577_18581441935036411_7095691175085340559_n.webp">
+         data-bg="img/Branding - Biarritz/Biarritz10.webp">
       <div class="cell-label">Biarritz</div>
     </div>
   </div>
   <div class="gl-label">Blu-x</div>
   <div class="galeria-grid blux-grid">
     <div class="cell c-7 tall lead"
-         data-bg="img/Branding - Blux/SaveClip.App_660420040_18109137787869218_7335345562191680633_n.webp" style="grid-row: 1 / span 2">
+         data-bg="img/Branding - Blux/Blux7.webp" style="grid-row: 1 / span 2">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-5 tall"
-         data-bg="img/Branding - Blux/SaveClip.App_656200401_18091465976124791_7415035827327074666_n.webp" style="grid-row: 1">
+         data-bg="img/Branding - Blux/Blux3.webp" style="grid-row: 1">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell"
-         data-bg="img/Branding - Blux/SaveClip.App_657351125_18105459616893679_749955414264995578_n.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center; aspect-ratio: 15/8">
+         data-bg="img/Branding - Blux/Blux5.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center; aspect-ratio: 15/8">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Blux/SaveClip.App_661568774_18544094950067093_7955562846722902067_n.webp">
+         data-bg="img/Branding - Blux/Blux8.webp">
       <div class="cell-label">Blu-x</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Blux/SaveClip.App_656265803_18123317455590119_3317030729987041951_n.webp">
+         data-bg="img/Branding - Blux/Blux4.webp">
       <div class="cell-label">Blu-x</div>
     </div>
   </div>
   <div class="gl-label">Guaraplus</div>
   <div class="galeria-grid">
     <div class="cell c-6 lead"
-         data-bg="img/Branding - Guaraplus/SaveClip.App_549296275_17934487134091376_204189283413184360_n.webp" style="background-position: center top">
+         data-bg="img/Branding - Guaraplus/Guaraplus1.webp" style="background-position: center top">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Guaraplus/SaveClip.App_550474535_17934487179091376_1733892165605131701_n.webp">
+         data-bg="img/Branding - Guaraplus/Guaraplus5.webp">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Branding - Guaraplus/SaveClip.App_550425283_17934487170091376_7634340089865659064_n.webp" style="aspect-ratio: 4/5">
+         data-bg="img/Branding - Guaraplus/Guaraplus4.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Branding - Guaraplus/SaveClip.App_549709020_17934487143091376_265918841303893384_n.webp" style="aspect-ratio: 4/5">
+         data-bg="img/Branding - Guaraplus/Guaraplus2.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Guaraplus</div>
     </div>
     <div class="cell c-4"
-         data-bg="img/Branding - Guaraplus/SaveClip.App_550697491_17934487161091376_6474762429963000352_n.webp" style="aspect-ratio: 4/5">
+         data-bg="img/Branding - Guaraplus/Guaraplus8.webp" style="aspect-ratio: 4/5">
       <div class="cell-label">Guaraplus</div>
     </div>
   </div>
   <div class="gl-label">Rum Parnaioca</div>
   <div class="galeria-grid rp-grid">
     <div class="cell c-7 tall lead"
-         data-bg="img/Branding - Rum Parnaioca/SaveClip.App_656294996_18085320125252944_3314374271264843504_n.webp" style="grid-row: 1 / span 2">
+         data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca6.webp" style="grid-row: 1 / span 2">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-5 tall"
-         data-bg="img/Branding - Rum Parnaioca/SaveClip.App_655042062_18125984116603187_5138126882935852821_n.webp" style="grid-row: 1">
+         data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca3.webp" style="grid-row: 1">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell"
-         data-bg="img/Branding - Rum Parnaioca/SaveClip.App_654773556_18041242850534685_5092492685132287138_n.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center; aspect-ratio: 15/8">
+         data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca2.webp" style="grid-column: 8 / span 5; grid-row: 2; background-position: center; aspect-ratio: 15/8">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Rum Parnaioca/SaveClip.App_656279343_18096094505063577_3214882979602067903_n.webp">
+         data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca5.webp">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
     <div class="cell c-6"
-         data-bg="img/Branding - Rum Parnaioca/SaveClip.App_658205303_18416465527133786_6470661537671788677_n.webp">
+         data-bg="img/Branding - Rum Parnaioca/Rum Parnaioca7.webp">
       <div class="cell-label">Rum Parnaioca</div>
     </div>
   </div>
@@ -456,10 +472,10 @@
     <div class="row r5">Studio</div>
   </div>
   <div class="servico-fotos">
-    <div class="sf-photo" data-bg="img/Studio/instagram-quemsomos9.webp">
+    <div class="sf-photo" data-bg="img/Studio/Studio4.webp">
       <span class="sf-label">Studio</span>
     </div>
-    <div class="sf-photo" data-bg="img/Studio/instagram-quemsomos9.webp">
+    <div class="sf-photo" data-bg="img/Studio/Studio6.png">
       <span class="sf-label">Studio</span>
     </div>
   </div>
@@ -478,15 +494,28 @@
   <div class="gl-label">Studio</div>
   <div class="galeria-grid">
     <div class="cell c-5 tall"
-         data-bg="img/Studio/instagram-quemsomos8.webp">
+         data-bg="img/Studio/Studio3.webp"
+         style="grid-column: 1 / span 5; grid-row: 1">
       <div class="cell-label">Studio</div>
     </div>
-    <div class="cell c-7 tall lead"
-         data-bg="img/Studio/SaveClip.App_559191886_18390138169192898_5858778955645473298_n.webp">
+    <div class="cell c-7"
+         data-bg="img/Studio/Studio1.webp"
+         style="grid-column: 6 / span 7; grid-row: 1">
       <div class="cell-label">Studio</div>
     </div>
-    <div class="cell c-12"
-         data-bg="img/Studio/SaveClip.App_587516869_18078642778930538_3167333254414769166_n.webp" style="aspect-ratio: 16/6">
+    <div class="cell c-5"
+         data-bg="img/Studio/Studio6.png"
+         style="grid-column: 1 / span 5; grid-row: 2 / span 2; aspect-ratio: auto; background-position: center top">
+      <div class="cell-label">Studio</div>
+    </div>
+    <div class="cell c-7"
+         data-bg="img/Studio/Studio2.webp"
+         style="grid-column: 6 / span 7; grid-row: 2; aspect-ratio: 5/3">
+      <div class="cell-label">Studio</div>
+    </div>
+    <div class="cell c-7"
+         data-bg="img/Studio/Studio5.png"
+         style="grid-column: 6 / span 7; grid-row: 3; aspect-ratio: 5/3">
       <div class="cell-label">Studio</div>
     </div>
   </div>
@@ -495,7 +524,7 @@
 <!-- ─────── FOTO HERO (banner antes do contato) ─────── -->
 <section class="photo-divider">
   <div class="photo-divider-bg"
-       data-bg="img/Quem somos/instagram-quemsomos1.webp"></div>
+       data-bg="img/Quem somos/Quem Somos2.webp"></div>
   <div class="photo-divider-content">
     <span class="label fade-up">Olhar Ficcus</span>
     <p class="tagline display fade-up delay-1">
@@ -535,7 +564,7 @@
     <rect x="8" y="15" width="10" height="7" rx="1.5" fill="none" stroke="white" stroke-width="1"/>
   </svg>
   <div class="contato-bg"
-       data-bg="img/Quem somos/instagram-quemsomos10.webp"
+       data-bg="img/Quem somos/Quem Somos3.webp"
        aria-hidden="true"></div>
   <div class="contato-inner">
     <span class="label fade-up">Entre em contato</span>

@@ -209,17 +209,100 @@ document.querySelectorAll('.servico').forEach(s => ioSwept.observe(s));
   });
 })();
 
-/* ── Marquee: pixel-exact loop via JS ── */
-document.fonts.ready.then(() => {
+/* ── Menu mobile hamburguer ── */
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+  if (!hamburger || !mobMenu) return;
+
+  function toggleMenu(open) {
+    mobMenu.classList.toggle('open', open);
+    hamburger.classList.toggle('active', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    nav.classList.toggle('mob-open', open);
+  }
+
+  hamburger.addEventListener('click', () => toggleMenu(!mobMenu.classList.contains('open')));
+
+  mobMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobMenu.classList.contains('open')) toggleMenu(false);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760 && mobMenu.classList.contains('open')) toggleMenu(false);
+  });
+})();
+
+/* ── Parallax no photo-divider ── */
+(function () {
+  const divider   = document.querySelector('.photo-divider');
+  const dividerBg = divider?.querySelector('.photo-divider-bg');
+  if (!divider || !dividerBg) return;
+
+  let rafParallax = null;
+
+  function updateParallax() {
+    rafParallax = null;
+    const rect  = divider.getBoundingClientRect();
+    const viewH = window.innerHeight;
+    if (rect.bottom < 0 || rect.top > viewH) return;
+    const progress = (viewH - rect.top) / (viewH + rect.height);
+    const offset   = (0.5 - progress) * 300;
+    dividerBg.style.transform = `translateY(${offset}px) scale(1.5)`;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!rafParallax) rafParallax = requestAnimationFrame(updateParallax);
+  }, { passive: true });
+
+  updateParallax();
+})();
+
+/* ── Proteção de imagens ── */
+// Overlay transparente sobre cada célula da galeria — bloqueia clique direito e drag
+document.querySelectorAll('.galeria-grid .cell').forEach(cell => {
+  const ov = document.createElement('div');
+  ov.className = 'cell-protect';
+  ov.addEventListener('contextmenu', e => e.preventDefault());
+  ov.addEventListener('dragstart',   e => e.preventDefault());
+  cell.appendChild(ov);
+});
+
+// Bloqueia clique direito e drag na imagem aberta no lightbox
+const lbImgEl = document.getElementById('lb-img');
+if (lbImgEl) {
+  lbImgEl.addEventListener('contextmenu', e => e.preventDefault());
+  lbImgEl.addEventListener('dragstart',   e => e.preventDefault());
+  lbImgEl.setAttribute('draggable', 'false');
+}
+
+// Bloqueia atalhos Ctrl+S (salvar página) e Ctrl+U (ver fonte)
+document.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  if (ctrl && (e.key === 's' || e.key === 'S' || e.key === 'u' || e.key === 'U')) {
+    e.preventDefault();
+  }
+}, { capture: true });
+
+/* ── Marquee: pixel-exact via JS após window.load ──
+   Mede a largura real do set (imagens já carregadas), injeta @keyframes correto
+   e SÓ ENTÃO inicia a animação — sem restart, sem salto visual. ── */
+window.addEventListener('load', function() {
   const track = document.querySelector('.marquee-track');
   if (!track) return;
   const set = track.querySelector('.marquee-set');
   if (!set) return;
   const w = set.offsetWidth;
+  if (!w) return;
   const s = document.createElement('style');
-  s.textContent = `@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-${w}px)}}`;
+  s.textContent = `@keyframes marquee{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-${w}px,0,0)}}`;
   document.head.appendChild(s);
-  track.style.animation = 'none';
-  void track.offsetWidth;
-  track.style.animation = '';
+  requestAnimationFrame(() => {
+    track.style.animation = 'marquee 38s linear infinite';
+  });
 });
