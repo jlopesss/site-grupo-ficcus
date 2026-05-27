@@ -59,7 +59,7 @@ const ioStack = new IntersectionObserver((entries) => {
       ioStack.unobserve(e.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -20% 0px' });
 document.querySelectorAll('.servico').forEach(s => ioStack.observe(s));
 
 /* ── Label / linha separadora ── */
